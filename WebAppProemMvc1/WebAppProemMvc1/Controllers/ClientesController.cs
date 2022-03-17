@@ -121,8 +121,8 @@ namespace WebAppProemMvc1.Controllers
             {
                 return NotFound();
             }
-
-            var cliente = myDbContext.Clientes.Find(id);
+            int ClienteId = (int)id;
+            var cliente = myDbContext.Clientes.Find(ClienteId);
 
             if (cliente == null)
             {
@@ -135,14 +135,15 @@ namespace WebAppProemMvc1.Controllers
         //--------------------------------HTTP POST eliminar cliente
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteCliente(int? id)
+        public IActionResult DeleteCliente(int? ClienteId)
         {
+            
             //obtener el cliente por id 
-            var cliente = myDbContext.Clientes.Find(id);
+            var cliente = myDbContext.Clientes.Find(ClienteId);
 
             if(cliente == null)
             {
-                NotFound();
+                return NotFound();
             }
 
                 myDbContext.Clientes.Remove(cliente);
