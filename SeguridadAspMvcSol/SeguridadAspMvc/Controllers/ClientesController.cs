@@ -50,9 +50,9 @@ namespace SeguridadAspMvc.Controllers
 
             if (!string.IsNullOrEmpty(valor))
             {
-            query = query.Where(x => x.Nombre.Contains(valor));
-
+                query = query.Where(x => x.Nombre.Contains(valor));
             }
+
             model.Listado = query.ToList();
             return View(model);
         }
